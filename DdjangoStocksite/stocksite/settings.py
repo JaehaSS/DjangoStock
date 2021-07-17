@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app1', # 07-14 app1 추가
+    'app1.apps.App1Config', # 07-14 app1 추가
     'corsheaders', # cors 사용 07.15 추가
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
@@ -78,8 +80,10 @@ WSGI_APPLICATION = 'stocksite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'test_db',
+        'HOST': '127.0.0.1',
+        'PORT': 27017,
     }
 }
 
@@ -127,8 +131,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8080',  # vue의 포트 번호
-    'http://127.0.0.1:8080',
-)
+CORS_ORIGIN_ALLOW_ALL = True   # true면 모든 포트로 허용이 되며 밑의 whitelist가 필요없음
+# CORS_ORIGIN_WHITELIST = ( # 다음의 포트로 오는 request는 허락해준다는 뜻
+    # 'http://localhost:8080',  # vue의 포트 번호
+    # 'http://127.0.0.1:8080',
+# )

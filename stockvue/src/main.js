@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from "./router"
-// import axios from "axios";
+import axios from "axios";
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue' // vue bootstrap 쓰기 위한 부분
 import 'bootstrap/dist/css/bootstrap.css'
@@ -23,12 +23,12 @@ new Vue({
 
 
 
-// let url = "http://localhost:8000/admin/"; // 장고 서버 주소
+let url = "http://localhost:8000/user/"; // 장고 서버 주소
 
-// axios.get(url)
-// .then(function(response){
-//   console.log(response);
-// })
-// .catch(function(response){
-//   console.log(response);
-// })
+axios.get(url)
+.then(function(response){
+  console.log(response);
+})
+.catch(function(response){
+  console.log(response);
+})

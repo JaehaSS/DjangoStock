@@ -1,7 +1,7 @@
 # stockvue
 
-## Project setup
-```
+## DjangoStockSite Vue 부분입니다.
+<!-- ```
 npm install
 ```
 
@@ -21,4 +21,4 @@ npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://cli.vuejs.org/config/). -->
