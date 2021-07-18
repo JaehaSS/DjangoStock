@@ -10,3 +10,8 @@ class TutorialSerializer(serializers.ModelSerializer):
                   'title',
                   'description',
                   'published')
+
+    def create(sef,validated_data):
+        return Tutorial.objects.create(**validated_data)
+    
+    

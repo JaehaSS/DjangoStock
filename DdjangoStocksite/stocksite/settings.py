@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'app1.apps.App1Config', # 07-14 app1 추가
     'corsheaders', # cors 사용 07.15 추가
     'rest_framework',
+    'content',
+    
+    
+
     
 ]
 

@@ -13,10 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path,include
 from app1 import views
+from content import views
+
 # from app1 import bridge
 
 urlpatterns = [
@@ -30,4 +32,6 @@ urlpatterns = [
     # path('short', bridge.handle_short), 
     # path('investorbuysell', bridge.handle_investorbuysell), 
     path('app1/', include('app1.urls')),
+    path("", include('content.urls')), 
+    # url(r'^', include('app1.urls')),
 ]
