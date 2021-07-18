@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #
+    'baton', # django admin 커스텀 마이징
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,9 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'content',
     
-    
 
-    
+    'baton.autodiscover', # django admin 커스텀 마이징
 ]
 
 MIDDLEWARE = [

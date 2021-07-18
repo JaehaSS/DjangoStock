@@ -13,8 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from baton.autodiscover import admin
 from django.conf.urls import url
-from django.contrib import admin
+#from django.contrib import admin
 from django.urls import path,include
 from app1 import views
 from content import views
@@ -23,15 +24,7 @@ from content import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('connection', bridge.handle_connection),
-    # path('stockcodes', bridge.handle_stockcodes),
-    # path('stockstatus', bridge.handle_stockstatus),
-    # path('stockcandles', bridge.handle_stockcandles),
-    # path('marketcandles', bridge.handle_marketcandles),
-    # path('stockfeatures', bridge.handle_stockfeatures),
-    # path('short', bridge.handle_short), 
-    # path('investorbuysell', bridge.handle_investorbuysell), 
+    path('baton/', include('baton.urls')), # baton url 추가
     path('app1/', include('app1.urls')),
-    path("", include('content.urls')), 
-    # url(r'^', include('app1.urls')),
+   
 ]

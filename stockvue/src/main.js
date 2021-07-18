@@ -23,7 +23,7 @@ new Vue({
 
 
 
-let url = "http://localhost:8000/user/"; // 장고 서버 주소
+let url = "http://localhost:8000/app1/api/tutorials"; // 장고 서버 주소
 
 axios.get(url)
 .then(function(response){
