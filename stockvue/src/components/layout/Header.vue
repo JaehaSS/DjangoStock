@@ -41,7 +41,7 @@
 
 <script>
 export default {
-    name : "headerr",
+    name : "header",
 };
 </script>
 
