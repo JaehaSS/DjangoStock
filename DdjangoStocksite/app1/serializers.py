@@ -1,6 +1,7 @@
+from django.db.models import fields
 from rest_framework import serializers
 from app1.models import Tutorial
-
+from .models import Quiz
 
 class TutorialSerializer(serializers.ModelSerializer):
 
@@ -11,7 +12,15 @@ class TutorialSerializer(serializers.ModelSerializer):
                   'description',
                   'published')
 
-    def create(sef,validated_data):
+    def create(self,validated_data):
         return Tutorial.objects.create(**validated_data)
-    
-    
+
+
+
+
+
+
+class QuizSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Quiz
+        fields  = ('description')

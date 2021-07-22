@@ -26,5 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('baton/', include('baton.urls')), # baton url 추가
     path('app1/', include('app1.urls')),
-   
+    path('authUser/', include('authUser.urls'))
+
 ]

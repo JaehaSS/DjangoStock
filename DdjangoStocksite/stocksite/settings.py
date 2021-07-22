@@ -30,6 +30,17 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+BATON = {
+    'SITE_HEADER' : "Jaeha Site",
+    'SITE_TITLE' :  "Jaeha Site타이틀",
+    'INDEX_TITLE' : "Jaeha Site인덱스",
+    'SUPPORT_HREF' : 'mailto:tkdgkwogk@gmail.com',
+    "COPYRIGHT" : '하지말어 ㅋ',
+    'POWERED_BY' : '<a href="https://fastcampus.co.kr">Fastcam</a>',
+    'MENU_TITLE' : "Jaeha Menu",
+}
+
+
 INSTALLED_APPS = [
     #
     'baton', # django admin 커스텀 마이징
@@ -43,7 +54,8 @@ INSTALLED_APPS = [
     'corsheaders', # cors 사용 07.15 추가
     'rest_framework',
     'content',
-    
+    'authUser',
+
 
     'baton.autodiscover', # django admin 커스텀 마이징
 ]
@@ -141,3 +153,14 @@ CORS_ORIGIN_ALLOW_ALL = True   # true면 모든 포트로 허용이 되며 밑�
     # 'http://localhost:8080',  # vue의 포트 번호
     # 'http://127.0.0.1:8080',
 # )
+
+# REST framework 권한 설정
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.renders.JSONRenderer',
+    ]
+}
+
