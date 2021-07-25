@@ -15,7 +15,7 @@
         text
       >
         <span class="mr-2">회원 가입</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <v-icon>mdi-account-plus</v-icon>
       </v-btn>
     </v-app-bar>
     <v-navigation-drawer
@@ -58,17 +58,22 @@
     <v-main>
       <router-view />
     </v-main>
+    <Footer />
   </v-app>
 </template>
 <script>
 // import Header from './components/layout/Header'
-// import Footer from './components/layout/Footer.vue'
+import Footer from './components/layout/Footer.vue'
 // import Content from '/components/layout/Content.vue'
+
+
+
 export default {
   name: 'App',
 
   components: {
     // Header, Footer, Content
+    Footer
   },
 
   data: ()=> ({
@@ -77,9 +82,26 @@ export default {
       { title: 'Home', icon: 'mdi-view-dashboard', to:'/' },
       { title: 'Photos', icon: 'mdi-image', to :'/about' },
       { title: 'About', icon: 'mdi-help-box', to :'/signup' },
+      { title: '차트', icon: 'mdi-github', to :'/chart' },
+      { title: '캔들차트', icon: 'mdi-github', to :'/Candlechart' },
+
     ],
     right: null,
   }),
 
 };
 </script>
+
+
+<style>
+html,body{padding:0; margin:0;}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin:0; padding:0;
+}
+</style>
+

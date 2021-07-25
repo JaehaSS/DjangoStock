@@ -13,6 +13,7 @@ from .models import Quiz
 import random
 from rest_framework.response import Response
 from django.forms.models import model_to_dict
+
 def index(request):
 
     return render(request, 'User.html')

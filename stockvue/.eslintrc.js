@@ -14,4 +14,5 @@ module.exports = {
     'vuetify/no-legacy-grid': 'error',
     'indent': ["error", 2]
   },
+
 }

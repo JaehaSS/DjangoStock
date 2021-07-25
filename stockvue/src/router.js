@@ -2,7 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "./views/Home";
 import About from "./views/About";
-import signup from "./views/signup";
+import Signup from "./views/signup";
+import Chart from "./views/Chart";
+import CandleChart from "./views/CandleChart";
 
 
 Vue.use(VueRouter);
@@ -13,7 +15,9 @@ const router = new VueRouter({
   routes : [
     {path:"/", component: Home, name: 'Home'},
     {path:"/about", component: About, name: 'about'},
-    {path:"/signup", component: signup, name: 'signup'},
+    {path:"/signup", component: Signup, name: 'Signup'},
+    {path:"/chart", component: Chart, name: 'Chart'},
+    {path:"/CandleChart", component: CandleChart, name: 'CandleChart'},
   ]
 });
 

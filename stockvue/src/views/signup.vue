@@ -10,6 +10,7 @@
         rules="required|max:10"
       >
         <v-text-field
+          ref="name"
           v-model="name"
           :counter="10"
           :error-messages="errors"
@@ -27,7 +28,8 @@
         }"
       >
         <v-text-field
-          v-model="phoneNumber"
+          ref="phone_number"
+          v-model="phone_number"
           :counter="12"
           :error-messages="errors"
           label="핸드폰 번호(-뺴고 기입해주세요)"
@@ -35,6 +37,20 @@
         />
       </validation-provider>
       <validation-provider
+        v-slot="{ errors }"
+        name="address"
+        rules="required|max:20"
+      >
+        <v-text-field
+          ref="address"
+          v-model="address"
+          :counter="20"
+          :error-messages="errors"
+          label="주소"
+          required
+        />
+      </validation-provider>
+      <!-- <validation-provider
         v-slot="{ errors }"
         name="email"
         rules="required|email"
@@ -45,7 +61,7 @@
           label="이메일"
           required
         />
-      </validation-provider>
+      </validation-provider> -->
       <validation-provider
         v-slot="{ errors }"
         rules="required"
@@ -101,10 +117,10 @@ extend('regex', {
   message: '{_field_} {_value_} does not match {regex}',
 })
 
-extend('email', {
-  ...email,
-  message: 'Email must be valid',
-})
+// extend('email', {
+//   ...email,
+//   message: 'Email must be valid',
+// })
 
 export default {
   components: {
@@ -113,15 +129,38 @@ export default {
   },
   data: () => ({
     name: '',
-    phoneNumber: '',
-    email: '',
+    phone_number: '',
+    address: '',
     select: null,
     checkbox: null,
   }),
 
   methods: {
     submit () {
-      this.$refs.observer.validate()
+      // this.$refs.observer.validate()
+      this.$axios.post("http://127.0.0.1:8000/authUser/addresses/", {
+        name :this.name,
+        phone_number:this.phone_number,
+        address:this.address})
+        .then((res)=>{
+          alert("등록되길 바래");
+          console.log(res.data);
+        })
+      // axios.post('http://127.0.0.1:8000/authUser/addresses/', {name = this.name,phone_number= this.phone_number,address = this.address })
+      // .then(res => console.log(res))
+
+    //   this.$axios.post("http://127.0.0.1:8000/authUser/addresses/",{
+    //     name = this.name,
+    //     phone_number= this.phone_number,
+    //     address = this.address
+    //   })
+    //     .then((res)=>{
+    //       alert("등록되길 바래");
+    //       console.log(res);
+    //     })
+    //     .then((err)=>{
+    //       console.log(err);
+    //     })
     },
     clear () {
       this.name = ''

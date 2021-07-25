@@ -1,12 +1,7 @@
-# stockvue
-
-## DjangoStockSite FrontEnd 부분입니다.
-## Vue.js 를 사용했습니다.
+## DjangoStockSite BackEnd 부분입니다.
+## Ddjango, RestFrameWork 를 사용했습니다.
 ***
-### 사용 라이브러리
--axios
--Vuetify
--apexchart
+
 
 <!-- ```
 npm install

@@ -4,8 +4,12 @@ import router from "./router"
 import axios from "axios";
 import vuetify from './plugins/vuetify'
 import VeeValidate from 'vee-validate';
+import VueApexCharts from 'vue-apexcharts'
 
+Vue.use(VueApexCharts)
 Vue.config.productionTip = false
+Vue.component('apexchart', VueApexCharts)
+Vue.prototype.$axios = axios; //전역변수로 설정 컴포넌트에서 this.$axios 호출할 수 있음
 
 new Vue({
   VeeValidate,

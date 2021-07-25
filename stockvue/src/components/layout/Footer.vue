@@ -1,7 +1,8 @@
 <template>
   <v-footer
-    dark
+
     padless
+    class="justify-center"
   >
     <v-card
       flat
@@ -10,13 +11,16 @@
     >
       <v-card-text>
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
+          v-for="(icon,index) in icons"
+          :key="index"
           class="mx-4 white--text"
           icon
+          @click="link1()"
         >
-          <v-icon size="24px">
-            {{ icon }}
+          <v-icon
+            size="24px"
+          >
+            {{ icon.i }}
           </v-icon>
         </v-btn>
       </v-card-text>
@@ -28,7 +32,7 @@
       <v-divider />
 
       <v-card-text class="white--text">
-        {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+        <strong>Jaeha StockSite</strong>
       </v-card-text>
     </v-card>
   </v-footer>
@@ -38,16 +42,36 @@ export default {
   name : "Footer",
   data () {
     return {
+
+      link: [
+        'https:/www.naver.com',
+        'https:/www.google.com',
+        'https:/www.naver.com',
+        'https:/www.google.com'
+      ],
       icons: [
-        'mdi-facebook',
-        'mdi-twitter',
-        'mdi-linkedin',
-        'mdi-instagram',
+        {i:'mdi-facebook'},
+        {i:'mdi-linkedin'},
+        {i:'mdi-instagram'},
+        {i:'mdi-email'},
       ]
+
+    }
+  },methods:{
+    link1:function(){
+      if(this.icon =="mdi-facebook"){
+        window.open("https://www.facebook.com/");
+        alert("1번");
+      }else{
+        alert("2번");
+      }
     }
   }
 }
 
 </script>
 
-<style></style>
+
+<style scoped>
+footer{border-top:1px solid #35495e; text-align:center; font-size:16px; color:#41b883; margin:100px 0 0 0;}
+</style>
