@@ -2,8 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Addresses
-from .serialIzers import AddressesSerializer
+from .serialIzers import AddressesSerializer, UserSerializer
 from rest_framework.parsers import JSONParser
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.response import Response
+from rest_framework import status
+
 # Create your views here.
 
 
@@ -56,3 +62,35 @@ def login(request):
             return HttpResponse(status=200)
         else:
             return HttpResponse(status=400)
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated, ))
+@authentication_classes((JSONWebTokenAuthentication,))
+def posts(request):
+    posts = Addresses.objects.all()
+    post_list = AddressesSerializer('json', posts)
+    return HttpResponse(post_list, content_type="text/json-comment-filtered")
+
+
+
+@api_view(['POST'])
+def signup(request):
+  password = request.data.get('password')
+  password_confirmation = request.data.get('passwordConfirmation')
+
+  if password != password_confirmation:
+    return Response({'error' : '비밀번호가 일치않습니다'},status=status.HTTP_400_BAD_REQUEST)
+
+
+  serializer = UserSerializer(data=request.data)
+
+
+  if serializer.is_vaild(raise_exception=True):
+    user = serializer.save()
+
+    user.set_password(request.data.get('password'))
+    user.save()
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+

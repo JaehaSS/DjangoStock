@@ -5,6 +5,8 @@ import About from "./views/About";
 import Signup from "./views/signup";
 import Chart from "./views/Chart";
 import CandleChart from "./views/CandleChart";
+import Login from "./views/login";
+
 
 
 Vue.use(VueRouter);
@@ -18,6 +20,7 @@ const router = new VueRouter({
     {path:"/signup", component: Signup, name: 'Signup'},
     {path:"/chart", component: Chart, name: 'Chart'},
     {path:"/CandleChart", component: CandleChart, name: 'CandleChart'},
+    {path:"/login", component: Login, name: 'Login'},
   ]
 });
 

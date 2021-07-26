@@ -19,6 +19,7 @@ from django.conf.urls import url
 from django.urls import path,include
 from app1 import views
 from content import views
+from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token
 
 # from app1 import bridge
 
@@ -26,6 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('baton/', include('baton.urls')), # baton url 추가
     path('app1/', include('app1.urls')),
-    path('authUser/', include('authUser.urls'))
-
+    path('authUser/', include('authUser.urls')),
+    path('api/token/', obtain_jwt_token),
+    path('api/token/verify/', verify_jwt_token),
+    path('api/token/refresh/', refresh_jwt_token),
+    path('api-token-auth/', obtain_jwt_token),
 ]

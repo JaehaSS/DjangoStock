@@ -11,11 +11,11 @@
     >
       <v-card-text>
         <v-btn
-          v-for="(icon,index) in icons"
-          :key="index"
+          v-for="icon in icons"
+          :key="icon.i"
           class="mx-4 white--text"
           icon
-          @click="link1()"
+          @click="link1(icon.link)"
         >
           <v-icon
             size="24px"
@@ -43,28 +43,17 @@ export default {
   data () {
     return {
 
-      link: [
-        'https:/www.naver.com',
-        'https:/www.google.com',
-        'https:/www.naver.com',
-        'https:/www.google.com'
-      ],
+
       icons: [
-        {i:'mdi-facebook'},
-        {i:'mdi-linkedin'},
-        {i:'mdi-instagram'},
-        {i:'mdi-email'},
+        {link: 'https:/www.facebook.com', i:'mdi-facebook'},
+        {link: 'https://github.com/JaehaSS', i:'mdi-github'},
+        {link: 'https:/www.google.com', i:'mdi-email'},
       ]
 
     }
   },methods:{
-    link1:function(){
-      if(this.icon =="mdi-facebook"){
-        window.open("https://www.facebook.com/");
-        alert("1번");
-      }else{
-        alert("2번");
-      }
+    link1:function(url){
+      window.open(url);
     }
   }
 }

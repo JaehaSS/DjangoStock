@@ -48,8 +48,26 @@
           :error-messages="errors"
           label="주소"
           required
+          v-validate="'required'"
         />
       </validation-provider>
+      <validation-provider
+        v-slot="{ errors }"
+        name="password"
+        rules="required|max:20"
+      >
+        <v-text-field
+          ref="password"
+          v-model="password"
+          type="password"
+          :counter="20"
+          :error-messages="errors"
+          label="패스워드"
+          required
+        />
+      </validation-provider>
+
+
       <!-- <validation-provider
         v-slot="{ errors }"
         name="email"
@@ -140,11 +158,13 @@ export default {
       // this.$refs.observer.validate()
       this.$axios.post("http://127.0.0.1:8000/authUser/addresses/", {
         name :this.name,
+        password : this.password,
         phone_number:this.phone_number,
         address:this.address})
         .then((res)=>{
           alert("등록되길 바래");
           console.log(res.data);
+          this.$router.push({ name : 'Login'})
         })
       // axios.post('http://127.0.0.1:8000/authUser/addresses/', {name = this.name,phone_number= this.phone_number,address = this.address })
       // .then(res => console.log(res))
@@ -165,6 +185,7 @@ export default {
     clear () {
       this.name = ''
       this.phoneNumber = ''
+      this.password = ''
       this.email = ''
       this.select = null
       this.checkbox = null

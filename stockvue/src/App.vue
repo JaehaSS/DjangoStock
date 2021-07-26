@@ -10,6 +10,15 @@
       <v-spacer />
 
       <v-btn
+        href="/login"
+        target="_self"
+        text
+      >
+        <span class="mr-2">로그인</span>
+        <v-icon>mdi-github</v-icon>
+      </v-btn>
+
+      <v-btn
         href="/signup"
         target="_self"
         text
