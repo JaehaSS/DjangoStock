@@ -76,6 +76,7 @@ def posts(request):
 
 @api_view(['POST'])
 def signup(request):
+
   password = request.data.get('password')
   password_confirmation = request.data.get('passwordConfirmation')
 

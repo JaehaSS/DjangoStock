@@ -1,85 +1,43 @@
 <template>
-  <div class="login">
-    <div class="heading">
-      <h2>Sign in</h2>
-      <form
-        id="loginForm"
-        @submit.prevent="submitForm"
-      >
-        <div class="input-group input-group-lg">
-          <span class="input-group-addon"><i class="fa fa-user" /></span>
-          <input
-            v-model="username"
-            type="text"
-            class="form-control"
-            placeholder="Username or email"
-          >
-        </div>
-
-        <div class="input-group input-group-lg">
-          <span class="input-group-addon"><i class="fa fa-lock" /></span>
-          <input
-            v-model="password"
-            type="password"
-            class="form-control"
-            placeholder="Password"
-          >
-        </div>
-
-        <button
-          type="submit"
-          class="float"
-        >
-          Login
-        </button>
-      </form>
-    </div>
-  </div>
+<div class="formContainer">
+  <a class="blod">회원가입</a>
+<form class="login-box">
+  <p>아이디</p>
+  <input type="text" v-model="username" name="username" label="가입할 ID를 입력" />
+  <p>이메일</p>
+  <input type="text" v-model="email" name="email" label="가입할 이메일 입력" />
+  <p>비밀번호</p>
+  <input type="password" v-model="password1" name="userpassword1" label="비밀번호 입력" />
+  <p>비밀번호 확인</p>
+  <input type="password" v-model="password2" name="userpassword23" label="비밀번호 확인." />
+  <br />
+</form>
+<div class="login-btn">
+  <input
+    type="submit"
+    class="button"
+    name="submit"
+    @click="signup({username, email, password1, password2})"
+    value="회원가입"
+    />
+</div>
+</div>
 </template>
 
-<script>
-import axios from 'axios';
 
+<script>
+import { mapState, mapActions} from "vuex";
 export default {
-  data: function() {
+  data(){
     return {
-      username: '',
-      password: '',
-    }
+      username : null,
+      email: null,
+      password1: null,
+      password2: null,
+    };
   },
   methods: {
-    submitForm: function() {
-      // event.preventDefault();
-      console.log(this.username, this.password);
-      var url = 'https://jsonplaceholder.typicode.com/users';
-      var data = {
-        username: this.username,
-        password: this.password
-      }
-      axios.post(url, data)
-        .then(function(response) {
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    }
-  }
+    ...mapActions(["signup"])
+  },
 }
 </script>
-
-
-<style>
-
-
-#loginForm input{
-  border: black solid 1px;
-}
-
-.float{
-  border: solid 1px;
-  background:aqua;
-
-}
-
-</style>

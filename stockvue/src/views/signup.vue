@@ -44,11 +44,11 @@
         <v-text-field
           ref="address"
           v-model="address"
+          v-validate="'required'"
           :counter="20"
           :error-messages="errors"
           label="주소"
           required
-          v-validate="'required'"
         />
       </validation-provider>
       <validation-provider
@@ -112,34 +112,27 @@
 <script>
 import { required, digits, email, max, regex } from 'vee-validate/dist/rules'
 import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from 'vee-validate'
-
 setInteractionMode('eager')
-
 extend('digits', {
   ...digits,
   message: '{_field_}  ({_value_})',
 })
-
 extend('required', {
   ...required,
   message: '개인 정보 동의 체크해주세요',
 })
-
 extend('max', {
   ...max,
   message: '{_field_} may not be greater than {length} characters',
 })
-
 extend('regex', {
   ...regex,
   message: '{_field_} {_value_} does not match {regex}',
 })
-
 // extend('email', {
 //   ...email,
 //   message: 'Email must be valid',
 // })
-
 export default {
   components: {
     ValidationProvider,
@@ -152,7 +145,6 @@ export default {
     select: null,
     checkbox: null,
   }),
-
   methods: {
     submit () {
       // this.$refs.observer.validate()
@@ -168,7 +160,6 @@ export default {
         })
       // axios.post('http://127.0.0.1:8000/authUser/addresses/', {name = this.name,phone_number= this.phone_number,address = this.address })
       // .then(res => console.log(res))
-
     //   this.$axios.post("http://127.0.0.1:8000/authUser/addresses/",{
     //     name = this.name,
     //     phone_number= this.phone_number,
@@ -185,8 +176,8 @@ export default {
     clear () {
       this.name = ''
       this.phoneNumber = ''
-      this.password = ''
-      this.email = ''
+      this.phone_number = ''
+      this.address = ''
       this.select = null
       this.checkbox = null
       this.$refs.observer.reset()

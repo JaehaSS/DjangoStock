@@ -5,6 +5,9 @@ import axios from "axios";
 import vuetify from './plugins/vuetify'
 import VeeValidate from 'vee-validate';
 import VueApexCharts from 'vue-apexcharts'
+import store from "./store"
+import 'es6-promise/auto'
+
 
 Vue.use(VueApexCharts)
 Vue.config.productionTip = false
@@ -13,6 +16,7 @@ Vue.prototype.$axios = axios; //전역변수로 설정 컴포넌트에서 this.$
 
 new Vue({
   VeeValidate,
+  store,
   router,
   vuetify,
   render: h => h(App)

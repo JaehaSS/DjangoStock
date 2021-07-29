@@ -28,8 +28,14 @@ urlpatterns = [
     path('baton/', include('baton.urls')), # baton url 추가
     path('app1/', include('app1.urls')),
     path('authUser/', include('authUser.urls')),
-    path('api/token/', obtain_jwt_token),
-    path('api/token/verify/', verify_jwt_token),
-    path('api/token/refresh/', refresh_jwt_token),
     path('api-token-auth/', obtain_jwt_token),
+    path('rest-auth/', include('rest_auth.urls')),
+    # path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    # path("api-auth/", include("rest_framework.urls")),
+#login, registration등 path 설정
+    # path("api/rest-auth/", include("rest_auth.urls")),
+# 토큰 발급 및 재발급 페이지 설정
+    # path('api/rest-auth/obtain_token/', obtain_jwt_token, name="obtain-jwt"),
+    # path('api/rest-auth/refresh_token/', refresh_jwt_t oken, name="refresh-jwt"),
+    # path("api/rest-auth/registration/", include("rest_auth.registration.urls")),
 ]

@@ -17,7 +17,26 @@
         <span class="mr-2">로그인</span>
         <v-icon>mdi-github</v-icon>
       </v-btn>
-
+      <span v-if="isLogin">
+       <v-btn
+        href="/login"
+        target="_self"
+        text
+      >
+        <span class="mr-2">로그인 됐음ㅋ</span>
+        <v-icon>mdi-github</v-icon>
+      </v-btn>
+        </span>
+        <span v-else>
+          <v-btn
+        href="/login"
+        target="_self"
+        text
+      >
+        <span class="mr-2">로그인 안됐음</span>
+        <v-icon>mdi-github</v-icon>
+      </v-btn>
+           </span>
       <v-btn
         href="/signup"
         target="_self"
@@ -93,6 +112,7 @@ export default {
       { title: 'About', icon: 'mdi-help-box', to :'/signup' },
       { title: '차트', icon: 'mdi-github', to :'/chart' },
       { title: '캔들차트', icon: 'mdi-github', to :'/Candlechart' },
+      { title: '로그인', icon: 'mdi-github', to :'/login' },
 
     ],
     right: null,

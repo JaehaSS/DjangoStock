@@ -1,33 +1,92 @@
-<!-- fluid: 현재 화면 width 꽉 차게 함
-  no-gutters : 요소 거리 삭제 기본 거터 사이즈 24픽셀
-
-
-
--->
-
 <template>
-  <h2>
-    게시판리스트/h2>
-    <btn @click="getList">
-      Get방식데이터접근
-    </btn>
-  </h2>
+  <div class="formContainer">
+    <form class="login-box">
+      <p>아이디</p>
+      <input
+        v-model="username"
+        type="text"
+        name="username"
+        label="ID를 입력하세요"
+      >
+      <!-- <p>이메일</p>
+      <input
+        v-model="email"
+        type="text"
+        name="email"
+        label="email를 입력하세요"
+      > -->
+      <p>비밀번호</p>
+      <input
+        v-model="password"
+        type="password"
+        name="userpassword"
+        label="비밀번호를 입력하세요"
+      >
+      <br>
+    </form>
+    <div class="login-btn">
+      <input
+        type="submit"
+        class="button"
+        name="submit"
+        value="로그인"
+        @click="login({username,  password})"
+      >
+    </div>
+  </div>
 </template>
-
-
 <script>
-export default {
-  methods: {
-    getList(){
-      this.$axios.post("http://127.0.0.1:8000/authUser/addresses/")
-        .then((res)=>{
-          console.log(res);
-        })
-        .then((err)=>{
-          console.log(err);
-        })
-    }
-  }
+import { mapState, mapActions} from "vuex";
 
+export default {
+  components: {
+
+  },
+  data () {
+    return {
+      username : null,
+      // email : null,
+      password : null,
+
+    };
+  },
+  computed: {
+    ...mapState(["isLogin", "isLoginError"])
+  },
+  methods: {
+    ...mapActions(["login"])
+  }
 };
+
+
+
+// signup () {
+//   // this.$refs.observer.validate()
+//   this.$axios.post("http://127.0.0.1:8000/authUser/signup/", {
+//     username :this.username,
+//     password : this.password,
+//     passwordConfirmation : this.passwordConfirmation
+//   })
+//     .then((res)=>{
+//       console.log(res.data);
+//       localStorage.setItem('jwt',res.data.token)
+//       this.$router.push({ name : 'Login'})
+
+//     })
+// axios.post('http://127.0.0.1:8000/authUser/addresses/', {name = this.name,phone_number= this.phone_number,address = this.address })
+// .then(res => console.log(res))
+
+//   this.$axios.post("http://127.0.0.1:8000/authUser/addresses/",{
+//     name = this.name,
+//     phone_number= this.phone_number,
+//     address = this.address
+//   })
+//     .then((res)=>{
+//       alert("등록되길 바래");
+//       console.log(res);
+//     })
+//     .then((err)=>{
+//       console.log(err);
+//     })
+
 </script>
