@@ -1,40 +1,7 @@
-MIDDLEWARE = [
-# 절대 잊지 말자!! middleware 최상단에 corsheaders를 위치시키자.
-'corsheaders.middleware.CorsMiddleware',
-]
 from pathlib import Path
 import datetime
 
 
-
-CORS_ORIGIN_ALLOW_ALL = False
-
-CORS_ORIGIN_WHITELIST = [
-"http://127.0.0.1:8080",
-"http://127.0.0.1:8081"
-
-]
-CORS_ALLOW_METHODS = (
-'DELETE',
-'GET',
-'OPTIONS',
-'PATCH',
-'POST',
-'PUT',
-)
-CORS_ALLOW_HEADERS = (
-'accept',
-'accept-encoding',
-'authorization',
-'access-control-request-method',
-'access-control-request-headers',
-'content-type',
-'dnt',
-'origin',
-'user-agent',
-'x-csrftoken',
-'x-requested-with',
-)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -54,6 +21,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,7 +36,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'user',
     'django.contrib.sites',
-    'corsheaders',
 ]
 
 SITE_ID = 1
@@ -84,15 +51,49 @@ JWT_AUTH = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware', # Django cors 사용 07.15 추가
+    # 'corsheaders.middleware.CorsMiddleware', # Django cors 사용 07.15 추가
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = [
+"http://127.0.0.1:8080",
+"http://127.0.0.1:8081",
+"http://localhost:8080",
+"http://localhost:8081",
+]
+
+CORS_ALLOW_METHODS = (
+'DELETE',
+'GET',
+'OPTIONS',
+'PATCH',
+'POST',
+'PUT',
+)
+
+CORS_ALLOW_HEADERS = (
+'accept',
+'accept-encoding',
+'authorization',
+'access-control-request-method',
+'access-control-request-headers',
+'content-type',
+'dnt',
+'origin',
+'user-agent',
+'x-csrftoken',
+'x-requested-with',
+)
 
 ROOT_URLCONF = 'practice.urls'
 
@@ -156,9 +157,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Seoul'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 

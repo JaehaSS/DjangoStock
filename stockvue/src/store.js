@@ -42,22 +42,24 @@ export default new Vuex.Store({
           //토큰을 로컬 스토리지에 저장
           localStorage.setItem("access_token", token); //로컬 스토리지에 토큰 저장
           this.dispatch("getMemberInfo");
-          router.push({ name: "Home" });
+          router.push({ name: "Home",});
           console.log(res);
         })
         .catch(() => {
-          alert("이메일과 비밀번호를 확인하세요.");
+          console.log(res);
+          // alert("이메일과 비밀번호를 확인하세요.");
         });
     },
     logout({ commit }) {
-      commit("logout");
+      localStorage.removeItem("access_token")
+      location.reload();
+      // commit("logout");
       router.push({ name: "home" });
     },
     signup(dispatch, loginObj) {
       // login --> 토큰 반환
       axios
         .post("http://127.0.0.1:8000/api/rest-auth/registration/", loginObj)
-      // loginObj = {email,password}
         .then(res => {
           alert("회원가입이 성공적으로 이뤄졌습니다.");
           router.push({ name: "login" });
@@ -65,7 +67,10 @@ export default new Vuex.Store({
         })
         .catch(() => {
           alert("이메일과 비밀번호를 확인하세요.");
+          console.log(res.data)
         });
+      alert("try catch가 안되서 잠시 쓰는 alert")
+      router.push({ name: "login" });
     },
     getMemberInfo({ commit }) {
       //로컬 스토리지에 저장된 토큰을 저장한다.
@@ -88,7 +93,7 @@ export default new Vuex.Store({
           commit("loginSuccess", userInfo);
         })
         .catch(() => {
-          alert("이메일과 비밀번호를 확인하세요.");
+          // alert("이메일과 비밀번호를 확인하세요.");
         });
     }
   }

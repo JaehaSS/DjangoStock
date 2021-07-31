@@ -30,7 +30,7 @@
         class="button"
         name="submit"
         value="로그인"
-        @click="login({username,  password})"
+        @click="login({username, password})"
       >
     </div>
   </div>

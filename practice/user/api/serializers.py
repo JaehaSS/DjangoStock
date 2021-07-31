@@ -6,3 +6,10 @@ class UserDisplaySerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ["username"]
+
+
+
+class UserlistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = '__all__'

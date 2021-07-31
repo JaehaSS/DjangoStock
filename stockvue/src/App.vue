@@ -6,37 +6,31 @@
       dark
     >
       <v-app-bar-nav-icon @click="drawer= !drawer" />
-
       <v-spacer />
 
       <v-btn
         href="/login"
         target="_self"
         text
+        v-if="isLogin"
       >
-        <span class="mr-2">로그인</span>
-        <v-icon>mdi-github</v-icon>
+        <span class="mr-2" @click="logout" >로그아웃</span>
+        <v-icon>mdi-account-circle</v-icon>
       </v-btn>
-      <span v-if="isLogin">
-       <v-btn
+
+      <v-btn
         href="/login"
         target="_self"
         text
+        v-else
       >
-        <span class="mr-2">로그인 됐음ㅋ</span>
-        <v-icon>mdi-github</v-icon>
+        <span class="mr-2">
+          로그인
+          </span>
+        <v-icon>mdi-account-circle-outline</v-icon>
       </v-btn>
-        </span>
-        <span v-else>
-          <v-btn
-        href="/login"
-        target="_self"
-        text
-      >
-        <span class="mr-2">로그인 안됐음</span>
-        <v-icon>mdi-github</v-icon>
-      </v-btn>
-           </span>
+
+
       <v-btn
         href="/signup"
         target="_self"
@@ -53,10 +47,10 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
-            Application
+            Stocksite
           </v-list-item-title>
           <v-list-item-subtitle>
-            subtext
+            Menu
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -93,6 +87,7 @@
 // import Header from './components/layout/Header'
 import Footer from './components/layout/Footer.vue'
 // import Content from '/components/layout/Content.vue'
+import { mapState, mapActions} from "vuex";
 
 
 
@@ -106,6 +101,7 @@ export default {
 
   data: ()=> ({
     drawer:false,
+    isLogin : false,
     items: [
       { title: 'Home', icon: 'mdi-view-dashboard', to:'/' },
       { title: 'Photos', icon: 'mdi-image', to :'/about' },
@@ -117,6 +113,19 @@ export default {
     ],
     right: null,
   }),
+  created:function(){
+    const token = localStorage.getItem('access_token')
+    if(token){
+      this.isLogin = true
+    }
+  },
+  computed: {
+    ...mapState(["isLoign"])
+  },
+  methods: {
+    ...mapActions(["logout"])
+  },
+
 
 };
 </script>
