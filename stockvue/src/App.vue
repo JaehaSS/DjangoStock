@@ -9,24 +9,27 @@
       <v-spacer />
 
       <v-btn
+        v-if="isLogin"
         href="/login"
         target="_self"
         text
-        v-if="isLogin"
       >
-        <span class="mr-2" @click="logout" >로그아웃</span>
+        <span
+          class="mr-2"
+          @click="logout"
+        >로그아웃</span>
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
 
       <v-btn
+        v-else
         href="/login"
         target="_self"
         text
-        v-else
       >
         <span class="mr-2">
           로그인
-          </span>
+        </span>
         <v-icon>mdi-account-circle-outline</v-icon>
       </v-btn>
 
@@ -103,12 +106,12 @@ export default {
     drawer:false,
     isLogin : false,
     items: [
-      { title: 'Home', icon: 'mdi-view-dashboard', to:'/' },
-      { title: 'Photos', icon: 'mdi-image', to :'/about' },
-      { title: 'About', icon: 'mdi-help-box', to :'/signup' },
-      { title: '차트', icon: 'mdi-github', to :'/chart' },
-      { title: '캔들차트', icon: 'mdi-github', to :'/Candlechart' },
-      { title: '로그인', icon: 'mdi-github', to :'/login' },
+      { title: 'Home', icon: 'mdi-home', to:'/' },
+      { title: '매매창(추가예정)', icon: 'mdi-image', to :'' },
+      // { title: 'About', icon: 'mdi-help-box', to :'/signup' },
+      { title: '차트', icon: 'mdi-chart-bar', to :'/chart' },
+      // { title: '캔들차트', icon: 'mdi-github', to :'/Candlechart' },
+      // { title: '로그인', icon: 'mdi-github', to :'/login' },
 
     ],
     right: null,

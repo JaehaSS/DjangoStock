@@ -16,7 +16,7 @@ export default new Vuex.Store({
       state.isLogin = true;
       state.isLoginError = false;
       state.userInfo = payload;
-      //payload 에 대한 정보는 위키피디아를 참고했다. 쉽게 말해 userInfo에 배정되는 실제 유저 정보를 할당한다고 보면 된다.
+      //userInfo에 배정되는 실제 유저 정보를 할당
     },
     loginError(state) { //로그인 실패시,
       state.isLogin = false;
